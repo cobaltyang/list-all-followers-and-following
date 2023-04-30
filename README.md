@@ -1,14 +1,6 @@
 # 😳 List All Followers And Following
 
-
-
 ## cobaltyang
-
-<img src="https://avatars.githubusercontent.com/u/41852561?v=4" width="120" />
-
-| Name | Bio | Blog | Location | Company |
-| -- | -- | -- | -- | -- |
-| cobaltyang | My research direction is machine learning and deep learning. I have some experience in Python. | [https://cobaltyang.me](https://https://cobaltyang.me) | Bei Jing | - |
 
 ## Followers <kbd>21</kbd>
 
@@ -3545,8 +3537,4 @@
     </td>
   </tr>
 </table>
-
-## LICENSE
-
-
 

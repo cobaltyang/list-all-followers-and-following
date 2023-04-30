@@ -46,7 +46,7 @@ async function run() {
     octokit.gists.update({
       gist_id: gistId,
       files: {
-        "filename.txt": {
+        "introduce.md": {
           content: content,
         },
       },

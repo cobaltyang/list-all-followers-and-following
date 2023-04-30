@@ -44,8 +44,7 @@ async function run() {
 
     const { cobaltsert } = process.env;
     const octokit2 = new Octokit({
-      auth: `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
-      `,
+      auth: `${ cobaltsert }`,
     });
 
     const content = 'Hello, world!';

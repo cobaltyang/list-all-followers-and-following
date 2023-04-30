@@ -1,7 +1,7 @@
-require('dotenv').config();
-const { Octokit } = require('@octokit/rest');
-const github = require('@actions/github');
-const { writeFileSync } = require('fs');
+require("dotenv").config();
+const { Octokit } = require("@octokit/rest");
+const github = require("@actions/github");
+const { writeFileSync } = require("fs");
 
 async function run() {
   try {
@@ -40,17 +40,17 @@ async function run() {
     const followers = await queryFollowers();
     followers.reverse();
     const following = await queryFollowing();
-    
+
     const content = "Hello, world!";
     const gistId = "9f270c4d447011f8e6901262398a69f5";
-   octokit.gists.update({
-  gist_id: gistId,
-  files: {
-    "filename.txt": {
-      content: content
-    }
-  }
-})
+    octokit.gists.update({
+      gist_id: gistId,
+      files: {
+        "filename.txt": {
+          content: content,
+        },
+      },
+    });
 
     const before = `# 😳 List All Followers And Following
 
@@ -69,41 +69,34 @@ async function run() {
   ${formatTable(following)}
 </table>
 
-`
-   
-    console.log('Done!')
+`;
+
+    console.log("Done!");
   } catch (error) {
     console.log(error.message);
   }
 }
 
-
-
-
-
-
-
-
 function formatTable(arr) {
   if (arr.length === 0) {
-    return '';
+    return "";
   }
-  let result = '';
+  let result = "";
   let row = arr.length / 5;
   const lastNo = arr.length % 5;
   if (lastNo != 0) row += 1;
   for (let j = 1; j <= row; j += 1) {
-    let data = '';
+    let data = "";
     data = `<tr>
-    <td width="150" align="center">${getUser(arr[(j-1)*5])}
+    <td width="150" align="center">${getUser(arr[(j - 1) * 5])}
     </td>
-    <td width="150" align="center">${getUser(arr[(j-1)*5+1])}
+    <td width="150" align="center">${getUser(arr[(j - 1) * 5 + 1])}
     </td>
-    <td width="150" align="center">${getUser(arr[(j-1)*5+2])}
+    <td width="150" align="center">${getUser(arr[(j - 1) * 5 + 2])}
     </td>
-    <td width="150" align="center">${getUser(arr[(j-1)*5+3])}
+    <td width="150" align="center">${getUser(arr[(j - 1) * 5 + 3])}
     </td>
-    <td width="150" align="center">${getUser(arr[(j-1)*5+4])}
+    <td width="150" align="center">${getUser(arr[(j - 1) * 5 + 4])}
     </td>
   </tr>`;
     result += data;
@@ -112,13 +105,14 @@ function formatTable(arr) {
 }
 
 function getUser(user) {
-  return user ?  `
+  return user
+    ? `
       <a href="${user.html_url}">
         <img src="${user.avatar_url}" width="50" />
         <br />
         ${user.login}
-      </a>` : '';
+      </a>`
+    : "";
 }
-
 
 run();

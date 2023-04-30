@@ -1,6 +1,5 @@
 # 😳 List All Followers And Following
 
-## cobaltyang
 
 ## Followers <kbd>21</kbd>
 

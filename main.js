@@ -41,25 +41,31 @@ async function run() {
     followers.reverse();
 
     const following = await queryFollowing();
+
+    const { cobaltsert } = process.env;
     const octokit2 = new Octokit({
-      auth: `token ${ COBALTSERT }`,
+      auth: `token ${cobaltsert}`,
     });
+
     const content = "Hello, world!";
     const gistId = "9f270c4d447011f8e6901262398a69f5";
-    octokit2.gists.update({
-      id: gistId,
-      files: {
-        "introduce.md": {
-          content: content,
+    octokit2.gists
+      .update({
+        id: gistId,
+        files: {
+          "introduce.md": {
+            content: content,
+          },
         },
-      },
-    }).then(response => {
-      // 更新成功
-      console.log(`Gist updated successfully: ${response.data.html_url}`);
-    }).catch(error => {
-      // 更新失败
-      console.error(`Failed to update Gist: ${error.message}`);
-    });
+      })
+      .then((response) => {
+        // 更新成功
+        console.log(`Gist updated successfully: ${response.data.html_url}`);
+      })
+      .catch((error) => {
+        // 更新失败
+        console.error(`Failed to update Gist: ${error.message}`);
+      });
 
     const before = `# 😳 List All Followers And Following
 

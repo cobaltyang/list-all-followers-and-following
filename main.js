@@ -44,7 +44,7 @@ async function run() {
 
     const { cobaltsert } = process.env;
     const octokit2 = new Octokit({
-      auth: `token ${cobaltsert}`,
+      auth: `token ${ token }`,
     });
 
     const content = "Hello, world!";

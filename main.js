@@ -51,7 +51,7 @@ async function run() {
     const gistId = "9f270c4d447011f8e6901262398a69f5";
     octokit2.gists
       .update({
-        id: gistId,
+        gist_id: gistId,
         files: {
           "introduce.md": {
             content: content,

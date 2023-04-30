@@ -44,10 +44,11 @@ async function run() {
 
     const { cobaltsert } = process.env;
     const octokit2 = new Octokit({
-      auth: `token ${ cobaltsert }`,
+      auth: `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
+      `,
     });
 
-    const content = "Hello, world!";
+    const content = 'Hello, world!';
     const gistId = "9f270c4d447011f8e6901262398a69f5";
     octokit2.gists
       .update({

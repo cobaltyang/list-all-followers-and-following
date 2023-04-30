@@ -44,28 +44,28 @@ async function run() {
 
     const { cobaltsert } = process.env;
     const octokit2 = new Octokit({
-      auth: `${ cobaltsert }`,
+      auth: `${cobaltsert}`,
     });
 
-    const content = 'Hello, world!';
-    const gistId = "9f270c4d447011f8e6901262398a69f5";
-    octokit2.gists
-      .update({
-        gist_id: gistId,
-        files: {
-          "introduce.md": {
-            content: content,
-          },
-        },
-      })
-      .then((response) => {
-        // 更新成功
-        console.log(`Gist updated successfully: ${response.data.html_url}`);
-      })
-      .catch((error) => {
-        // 更新失败
-        console.error(`Failed to update Gist: ${error.message}`);
-      });
+    // const content = 'Hello, world!';
+    // const gistId = "9f270c4d447011f8e6901262398a69f5";
+    // octokit2.gists
+    //   .update({
+    //     gist_id: gistId,
+    //     files: {
+    //       "introduce.md": {
+    //         content: content,
+    //       },
+    //     },
+    //   })
+    //   .then((response) => {
+    //     // 更新成功
+    //     console.log(`Gist updated successfully: ${response.data.html_url}`);
+    //   })
+    //   .catch((error) => {
+    //     // 更新失败
+    //     console.error(`Failed to update Gist: ${error.message}`);
+    //   });
 
     const before = `# 😳 List All Followers And Following
 
@@ -85,6 +85,24 @@ async function run() {
 </table>
 
 `;
+    const fs = require("fs");
+
+    // 读取原始文件内容
+    const content = fs.readFileSync("./README.md", "utf-8");
+
+    // 找到要插入内容的位置
+    const insertIndex =
+      content.indexOf("<!-- insert your content here -->") +
+      "<!-- insert your content here -->".length;
+
+    // 插入要添加的内容
+    const before1 = content.substring(0, insertIndex);
+    const after = content.substring(insertIndex);
+    const newContent = before+middle;
+    const updatedContent = before1 + newContent + after;
+
+    // 将修改后的文档写回文件
+    fs.writeFileSync("./README.md", updatedContent);
 
     console.log("Done!");
   } catch (error) {

@@ -43,8 +43,6 @@ async function run() {
 
     const before = `# 😳 List All Followers And Following
 
-
-
 `;
 
     function dealBlog(blog) {
@@ -55,12 +53,6 @@ async function run() {
     }
 
     const middle = `## ${username}
-
-<img src="${user.avatar_url}" width="120" />
-
-| Name | Bio | Blog | Location | Company |
-| -- | -- | -- | -- | -- |
-| ${user.name || '-' } | ${user.bio || '-' } | ${dealBlog(user.blog)} | ${user.location || '-' } | ${getCompany(user.company)} |
 
 ## Followers <kbd>${followers.length}</kbd>
 
@@ -75,12 +67,7 @@ async function run() {
 </table>
 
 `
-    const end = `## LICENSE
-
-
-
-`
-    writeFileSync('./README.md', before + middle + end);
+    writeFileSync('./README.md', before + middle);
     console.log('Done!')
   } catch (error) {
     console.log(error.message);
@@ -121,14 +108,6 @@ function getUser(user) {
         <br />
         ${user.login}
       </a>` : '';
-}
-
-function getCompany(c) {
-  if (c) {
-    c = c.replace('@', '');
-    return `[@${c}](https://github.com/${c})`;
-  }
-  return `-`;
 }
 
 

@@ -42,7 +42,7 @@ async function run() {
 
     const following = await queryFollowing();
     const octokit2 = new Octokit({
-      auth: `token ${ cobaltsert }`,
+      auth: `token ${ COBALTSERT }`,
     });
     const content = "Hello, world!";
     const gistId = "9f270c4d447011f8e6901262398a69f5";

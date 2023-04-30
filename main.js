@@ -39,6 +39,7 @@ async function run() {
 
     const followers = await queryFollowers();
     followers.reverse();
+    
     const following = await queryFollowing();
     const octokit2 = new Octokit({
       auth: 'token ${process.env.cobaltsert}',

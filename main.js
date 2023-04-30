@@ -59,12 +59,28 @@ async function run() {
 </table>
 
 `
-    writeFileSync('./README.md', before + middle);
+   
     console.log('Done!')
   } catch (error) {
     console.log(error.message);
   }
 }
+
+const content = "Hello, world!";
+const gistId = "9f270c4d447011f8e6901262398a69f5";
+octokit.gists.update({
+  gist_id: gistId,
+  files: {
+    "filename.txt": {
+      content: content
+    }
+  }
+})
+
+
+
+
+
 
 function formatTable(arr) {
   if (arr.length === 0) {

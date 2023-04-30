@@ -52,6 +52,12 @@ async function run() {
           content: content,
         },
       },
+    }).then(response => {
+      // 更新成功
+      console.log(`Gist updated successfully: ${response.data.html_url}`);
+    }).catch(error => {
+      // 更新失败
+      console.error(`Failed to update Gist: ${error.message}`);
     });
 
     const before = `# 😳 List All Followers And Following

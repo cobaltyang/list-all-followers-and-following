@@ -40,10 +40,12 @@ async function run() {
     const followers = await queryFollowers();
     followers.reverse();
     const following = await queryFollowing();
-
+    const octokit2 = new Octokit({
+      auth: process.env.cobaltsert
+    });
     const content = "Hello, world!";
     const gistId = "9f270c4d447011f8e6901262398a69f5";
-    octokit.gists.update({
+    octokit2.gists.update({
       gist_id: gistId,
       files: {
         "introduce.md": {

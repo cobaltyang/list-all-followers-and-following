@@ -45,15 +45,7 @@ async function run() {
 
 `;
 
-    function dealBlog(blog) {
-      if (blog) {
-        return `[${blog}](https://${blog})`;
-      }
-      return '-';
-    }
-
-    const middle = `## ${username}
-
+    const middle = `
 ## Followers <kbd>${followers.length}</kbd>
 
 <table>
